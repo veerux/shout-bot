@@ -1,5 +1,7 @@
 import discord
 import os
+import requests
+import pyjokes
 
 client = discord.Client()
 
@@ -13,7 +15,12 @@ async def on_message(message):
     return
 
   if message.content.startswith('$hello'):
-    await message.channel.send('Hello!')
+    await message.channel.send('HELLO!')
+
+  if message.content.startswith('$jj'):
+    joke = pyjokes.get_joke()
+    await message.channel.send(joke)
+
 
 client.run(os.getenv('TOKEN'))
 
